@@ -1,13 +1,15 @@
-package com.example.android.miwok;
+package com.example.android.miwok.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.android.miwok.R;
 import com.example.android.miwok.structs.AppReestr;
+import com.example.android.miwok.structs.Word;
 import com.example.android.miwok.views.WordAdapter;
 
-public class PhrasesActivity extends AppCompatActivity {
+public class NumbersActivity extends AppCompatActivity {
 
     private WordAdapter itemsAdapter;
 
@@ -17,11 +19,10 @@ public class PhrasesActivity extends AppCompatActivity {
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.list_view);
         itemsAdapter =
-                new WordAdapter(this, AppReestr.getWordsRepository().getPhrasesList()/*, R.layout.phrase_list_item*/);
-        itemsAdapter.setWordsBackgroundColor(R.color.category_phrases);
+                new WordAdapter(this, AppReestr.getWordsRepository().getNumbersList());
+        itemsAdapter.setWordsBackgroundColor(R.color.category_numbers);
         ListView listView = (ListView) findViewById(R.id.list);
         itemsAdapter.setParent(listView);
-
     }
 
     @Override

@@ -17,43 +17,64 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.android.miwok.activities.ColorsActivity;
+import com.example.android.miwok.activities.FamilyActivity;
+import com.example.android.miwok.activities.NumbersActivity;
+import com.example.android.miwok.activities.PhrasesActivity;
+import com.example.android.miwok.fragments.MiwokFragmentAdapter;
+
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set the content of the activity to use the activity_main.xml layout file
-        setContentView(R.layout.activity_main);
-        findViewById(R.id.family).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, FamilyActivity.class));
-            }
-        });
+        setContentView(R.layout.activity_main_pager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        findViewById(R.id.colors).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ColorsActivity.class));
-            }
-        });
+        // Create an adapter that knows which fragment should be shown on each page
+        MiwokFragmentAdapter adapter = new MiwokFragmentAdapter(
+                getSupportFragmentManager(), getApplicationContext());
 
-        findViewById(R.id.numbers).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, NumbersActivity.class));
-            }
-        });
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
 
-        findViewById(R.id.phrases).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PhrasesActivity.class));
-            }
-        });
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+//        findViewById(R.id.family).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, FamilyActivity.class));
+//            }
+//        });
+//
+//        findViewById(R.id.colors).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, ColorsActivity.class));
+//            }
+//        });
+//
+//        findViewById(R.id.numbers).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, NumbersActivity.class));
+//            }
+//        });
+//
+//        findViewById(R.id.phrases).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, PhrasesActivity.class));
+//            }
+//        });
     }
 }

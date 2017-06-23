@@ -1,9 +1,10 @@
-package com.example.android.miwok;
+package com.example.android.miwok.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.android.miwok.R;
 import com.example.android.miwok.structs.AppReestr;
 import com.example.android.miwok.views.WordAdapter;
 
